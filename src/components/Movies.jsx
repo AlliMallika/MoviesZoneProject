@@ -3,18 +3,23 @@ import { movies } from '../data'
 
 export const Movies = () => {
     const [movieList, setMovieList] = useState(movies)
+    const filteredMoviesByCategory = (category)=>{
+        setMovieList(movies.filter((data)=>data.category == category))
+    }
+   
+
     return (
         <>
             <div className='my-3' style={{ width: '1000px', margin: 'auto' }}>
 
                 <div className='mx-auto text-center'>
-                    <button type="button" className="btn btn-outline-primary mx-3">All</button>
-                    <button type="button" className="btn btn-outline-secondary mx-3">Thriller</button>
-                    <button type="button" className="btn btn-outline-success mx-3">Action</button>
-                    <button type="button" className="btn btn-outline-danger mx-3">Horror</button>
-                    <button type="button" className="btn btn-outline-warning mx-3">Animation</button>
-                    <button type="button" className="btn btn-outline-info mx-3">Sci-Fi</button>
-                    <button type="button" className="btn btn-outline-light mx-3">Drama</button>
+                    <button type="button" onClick={()=>setMovieList(movies)} className="btn btn-outline-primary mx-3">All</button>
+                    <button type="button" onClick={()=>filteredMoviesByCategory("Thriller")} className="btn btn-outline-secondary mx-3">Thriller</button>
+                    <button type="button" onClick={()=>filteredMoviesByCategory("Action")} className="btn btn-outline-success mx-3">Action</button>
+                    <button type="button" onClick={()=>filteredMoviesByCategory("Horror")}   className="btn btn-outline-danger mx-3">Horror</button>
+                    <button type="button" onClick={()=>filteredMoviesByCategory("Animation")} className="btn btn-outline-warning mx-3">Animation</button>
+                    <button type="button" onClick={()=>filteredMoviesByCategory("Sci-Fi")} className="btn btn-outline-info mx-3">Sci-Fi</button>
+                    <button type="button" onClick={()=>filteredMoviesByCategory("Drama")} className="btn btn-outline-light mx-3">Drama</button>
                 </div>
             </div>
 
